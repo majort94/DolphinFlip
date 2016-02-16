@@ -10,8 +10,7 @@ public class birdEnemy : MonoBehaviour {
 	void Start () {
 		thrust = Random.Range (.5f, 1f);
 		rb = GetComponent<Rigidbody2D>();
-		Debug.Log ("yeye");
-		rb.AddForce (Vector2.left * thrust, ForceMode2D.Impulse);
+		rb.AddForce (Vector2.left * thrust * Time.fixedDeltaTime, ForceMode2D.Impulse);
 
 	}
 	

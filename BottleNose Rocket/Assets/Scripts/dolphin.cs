@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class dolphin : MonoBehaviour {
-	private Transform tr;
+	private Transform dolphinTransform;
 	public Rigidbody2D rocket;
 	public Rigidbody2D rb;
 	public float thrust = 2f;
@@ -14,7 +14,9 @@ public class dolphin : MonoBehaviour {
 	private Vector3 canvasVect;
 	public float floor = -6.5f;
 
+
 	public GameObject rocketObj;
+
 
 
 
@@ -28,40 +30,42 @@ public class dolphin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		tr = GetComponent<Transform>();
+		dolphinTransform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (tr.position.y > maxHeight) {
-			maxHeight = tr.position.y;
+	void FixedUpdate(){
+		if (dolphinTransform.position.y > maxHeight) {
+			maxHeight = dolphinTransform.position.y;
 			score = maxHeight * 3.5f;
 			scoreText.text = "Score: " + (int) score;
 
 		}
-
-		camVect = new Vector3(tr.position.x,tr.position.y,-10);
-		canvasVect = new Vector3(tr.position.x,tr.position.y,0);
-		camera.position = camVect;
-		canvas.position = canvasVect;
-		if ((tr.position.y < 0) && (!underSea)) {
+		if ((dolphinTransform.position.y < 0) && (!underSea)) {
 			underSea = true;
 			rb.gravityScale = 0;
 			rocket.gravityScale = 0;
-			Vector2 temp = new Vector2 (rb.velocity.x * .1f, rb.velocity.y * .1f);
-			rb.velocity = temp;
-			rocket.velocity = temp;
+			Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
+			rb.velocity = temp  * Time.fixedDeltaTime;
+			rocket.velocity = temp  * Time.fixedDeltaTime;
 		} else {
-			if ((tr.position.y > 0) && (underSea)) {
+			if ((dolphinTransform.position.y > 0) && (underSea)) {
 				underSea = false;
 			}
 		}
 
-		if (tr.position.y < floor) {
+		if (dolphinTransform.position.y < floor) {
 			rb.velocity = Vector2.zero;
 			rocket.velocity = Vector2.zero;
 		}
+
+		camVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,-10);
+		canvasVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,0);
+		camera.position = camVect;
+		canvas.position = canvasVect;
+		camera.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
+		canvas.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
 	}
 
 	public void onHit(){
@@ -71,7 +75,7 @@ public class dolphin : MonoBehaviour {
 		} else {
 			temp = new Vector2 (rb.velocity.x * .05f, rb.velocity.y * .1f);
 		}
-		rb.velocity = temp;
+		rb.velocity = temp  * Time.fixedDeltaTime;
 		//rocket.velocity = temp;
 
 	}
