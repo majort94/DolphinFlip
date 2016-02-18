@@ -5,12 +5,13 @@ public class birdEnemy : MonoBehaviour {
 
 	private Vector2 velocity;
 	private Rigidbody2D rb;
-	private float thrust;
+	private float speed;
 	// Use this for initialization
 	void Start () {
-		thrust = Random.Range (.5f, 1f);
+		speed = Random.Range (2f, 10f);
 		rb = GetComponent<Rigidbody2D>();
-		rb.AddForce (Vector2.left * thrust * Time.fixedDeltaTime, ForceMode2D.Impulse);
+		rb.velocity = new Vector2 (-1 * speed, 0f);
+		//rb.AddForce (Vector2.left * thrust, ForceMode2D.Impulse);
 
 	}
 	

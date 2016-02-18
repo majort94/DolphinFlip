@@ -24,11 +24,11 @@ public class hoop : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D temp){
-		Debug.Log ("Hoop, " + temp.gameObject);
-		if (temp.gameObject == dolphin) {
-			rocketBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust * Time.fixedDeltaTime, ForceMode2D.Impulse);
-			dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust * Time.fixedDeltaTime, ForceMode2D.Impulse);
 		//Debug.Log ("Hoop, " + temp.gameObject);
+		if (temp.gameObject == dolphin) {
+			rocketBody.AddForce (new Vector2 (.5f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+			dolphinBody.AddForce (new Vector2 (.5f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+		Debug.Log ("Hoop, " + temp.gameObject);
 		}
 	}
 	

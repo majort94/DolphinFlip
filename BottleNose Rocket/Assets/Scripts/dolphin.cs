@@ -8,12 +8,13 @@ public class dolphin : MonoBehaviour {
 	public Rigidbody2D rb;
 	public float thrust = 2f;
 	private bool underSea = false;
-	public Transform camera;
+	public Transform camera1;
 	public Transform canvas;
 	private Vector3 camVect;
 	private Vector3 canvasVect;
 	public float floor = -6.5f;
 
+	public bool gameStart = false;
 
 	public GameObject rocketObj;
 
@@ -24,7 +25,7 @@ public class dolphin : MonoBehaviour {
 	private float maxHeight = 0f;
 	public Text scoreText;
 
-	private int lives = 1;
+//	private int lives = 1;
 
 
 
@@ -36,36 +37,43 @@ public class dolphin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate(){
-		if (dolphinTransform.position.y > maxHeight) {
-			maxHeight = dolphinTransform.position.y;
-			score = maxHeight * 3.5f;
-			scoreText.text = "Score: " + (int) score;
 
-		}
-		if ((dolphinTransform.position.y < 0) && (!underSea)) {
-			underSea = true;
-			rb.gravityScale = 0;
-			rocket.gravityScale = 0;
-			Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
-			rb.velocity = temp  * Time.fixedDeltaTime;
-			rocket.velocity = temp  * Time.fixedDeltaTime;
-		} else {
-			if ((dolphinTransform.position.y > 0) && (underSea)) {
-				underSea = false;
+		if(gameStart){
+			if (dolphinTransform.position.y > maxHeight) {
+				maxHeight = dolphinTransform.position.y;
+				score = maxHeight * 3.5f;
+				scoreText.text = "Score: " + (int) score;
+
 			}
+			if ((dolphinTransform.position.y < 0) && (!underSea)) {
+				underSea = true;
+				rb.gravityScale = .3f;
+				rocket.gravityScale = .3f;
+				Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
+				rb.velocity = temp  * Time.fixedDeltaTime;
+				rocket.velocity = temp  * Time.fixedDeltaTime;
+			} else {
+				if ((dolphinTransform.position.y > 0) && (underSea)) {
+					//underSea = false;
+				}
+			}
+
+			if (dolphinTransform.position.y <= floor) {
+				rb.velocity = Vector2.zero;
+				rocket.velocity = Vector2.zero;
+			}
+
+
 		}
 
-		if (dolphinTransform.position.y < floor) {
-			rb.velocity = Vector2.zero;
-			rocket.velocity = Vector2.zero;
-		}
 
 		camVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,-10);
 		canvasVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,0);
-		camera.position = camVect;
+		camera1.position = camVect;
 		canvas.position = canvasVect;
-		camera.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
+		camera1.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
 		canvas.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
+
 	}
 
 	public void onHit(){
