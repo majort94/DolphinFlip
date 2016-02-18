@@ -3,18 +3,21 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class dolphin : MonoBehaviour {
-	private Transform tr;
+	private Transform dolphinTransform;
 	public Rigidbody2D rocket;
 	public Rigidbody2D rb;
 	public float thrust = 2f;
 	private bool underSea = false;
-	public Transform camera;
+	public Transform camera1;
 	public Transform canvas;
 	private Vector3 camVect;
 	private Vector3 canvasVect;
 	public float floor = -6.5f;
 
+	public bool gameStart = false;
+
 	public GameObject rocketObj;
+
 
 
 
@@ -22,46 +25,55 @@ public class dolphin : MonoBehaviour {
 	private float maxHeight = 0f;
 	public Text scoreText;
 
-	private int lives = 1;
+//	private int lives = 1;
 
 
 
 	// Use this for initialization
 	void Start () {
-		tr = GetComponent<Transform>();
+		dolphinTransform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (tr.position.y > maxHeight) {
-			maxHeight = tr.position.y;
-			score = maxHeight * 3.5f;
-			scoreText.text = "Score: " + (int) score;
+	void FixedUpdate(){
 
-		}
+		if(gameStart){
+			if (dolphinTransform.position.y > maxHeight) {
+				maxHeight = dolphinTransform.position.y;
+				score = maxHeight * 3.5f;
+				scoreText.text = "Score: " + (int) score;
 
-		camVect = new Vector3(tr.position.x,tr.position.y,-10);
-		canvasVect = new Vector3(tr.position.x,tr.position.y,0);
-		camera.position = camVect;
-		canvas.position = canvasVect;
-		if ((tr.position.y < 0) && (!underSea)) {
-			underSea = true;
-			rb.gravityScale = 0;
-			rocket.gravityScale = 0;
-			Vector2 temp = new Vector2 (rb.velocity.x * .1f, rb.velocity.y * .1f);
-			rb.velocity = temp;
-			rocket.velocity = temp;
-		} else {
-			if ((tr.position.y > 0) && (underSea)) {
-				underSea = false;
 			}
+			if ((dolphinTransform.position.y < 0) && (!underSea)) {
+				underSea = true;
+				rb.gravityScale = .3f;
+				rocket.gravityScale = .3f;
+				Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
+				rb.velocity = temp  * Time.fixedDeltaTime;
+				rocket.velocity = temp  * Time.fixedDeltaTime;
+			} else {
+				if ((dolphinTransform.position.y > 0) && (underSea)) {
+					//underSea = false;
+				}
+			}
+
+			if (dolphinTransform.position.y <= floor) {
+				rb.velocity = Vector2.zero;
+				rocket.velocity = Vector2.zero;
+			}
+
+
 		}
 
-		if (tr.position.y < floor) {
-			rb.velocity = Vector2.zero;
-			rocket.velocity = Vector2.zero;
-		}
+
+		camVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,-10);
+		canvasVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,0);
+		camera1.position = camVect;
+		canvas.position = canvasVect;
+		camera1.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
+		canvas.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);
+
 	}
 
 	public void onHit(){
@@ -71,7 +83,7 @@ public class dolphin : MonoBehaviour {
 		} else {
 			temp = new Vector2 (rb.velocity.x * .05f, rb.velocity.y * .1f);
 		}
-		rb.velocity = temp;
+		rb.velocity = temp  * Time.fixedDeltaTime;
 		//rocket.velocity = temp;
 
 	}

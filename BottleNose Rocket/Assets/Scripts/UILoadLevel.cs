@@ -21,7 +21,7 @@ public class UILoadLevel : MonoBehaviour
 		if (level == 1) {
 			loadScreen = false;
 		}
-		SceneManager.LoadScene(level);
+			SceneManager.LoadScene(level);
     }
 
 }
