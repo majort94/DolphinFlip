@@ -18,8 +18,11 @@ public class InputManager : MonoBehaviour {
 	private bool inAir = false;
 
 	private bool beenTouched = false;
-	private float rocketTimeStamp = 0f;
-	public GameObject smoke;
+	private float particleTimeStamp = 0f;
+	public ParticleSystem smoke;
+	public ParticleSystem smoke2;
+
+	public bool gameOver = false;
 
 
 	public Text rotation;
@@ -64,15 +67,17 @@ public class InputManager : MonoBehaviour {
 
 				rocketBody.AddForce (direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				dolphinBody.AddForce ( direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-				rocketTimeStamp = Time.timeSinceLevelLoad;
 				Debug.Log ("in air thrust " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
 			} else {
 				Debug.Log ("orig thrust:  " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
 				rocketBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-				rocketTimeStamp = Time.timeSinceLevelLoad;
+				
 			}
-		//smoke.GetComponent<ParticleSystems> ().play ();
+		smoke.Play ();
+		smoke2.Play ();
+		particleTimeStamp = Time.timeSinceLevelLoad;
+
 		dolphin.GetComponent<dolphin> ().gameStart = true;
 			inAir = true;
 		//}
@@ -88,8 +93,13 @@ public class InputManager : MonoBehaviour {
 		}
 
 
+
 		if (((Input.GetMouseButtonUp (0)) || ((Input.touchCount > 0) && Input.GetTouch (0).phase == TouchPhase.Began)) && (clicks > 0) && !beenTouched) {
 
+			if (gameOver) {
+				Debug.Log ("overrr");
+				this.GetComponent<UILoadLevel> ().LoadScene (1);
+			}
 			Vector3 mousePos = camera1.ScreenToWorldPoint (Input.mousePosition);
 			//Touch[] touches = Input.touches;
 			if (Input.touches.Length > 0) {
@@ -101,11 +111,16 @@ public class InputManager : MonoBehaviour {
 			boost (direction);
 		}
 
+		resetParticles ();
+
 	}
 
-	void resetTouch(){
-		if (Time.timeSinceLevelLoad + .2f > rocketTimeStamp) {
-			beenTouched = false;
+	void resetParticles(){
+		if ((Time.timeSinceLevelLoad > (particleTimeStamp + .5f)) && (particleTimeStamp != 0)) {
+			smoke.Pause ();
+			smoke2.Pause ();
+			smoke.Clear ();
+			smoke2.Clear ();
 		}
 	}
 

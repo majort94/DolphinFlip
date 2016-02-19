@@ -17,6 +17,7 @@ public class dolphin : MonoBehaviour {
 	public bool gameStart = false;
 
 	public GameObject rocketObj;
+	public GameObject manager;
 
 
 
@@ -24,6 +25,7 @@ public class dolphin : MonoBehaviour {
 	private float score = 0;
 	private float maxHeight = 0f;
 	public Text scoreText;
+	public GameObject gameOver;
 
 //	private int lives = 1;
 
@@ -61,6 +63,8 @@ public class dolphin : MonoBehaviour {
 			if (dolphinTransform.position.y <= floor) {
 				rb.velocity = Vector2.zero;
 				rocket.velocity = Vector2.zero;
+				gameOver.SetActive (true);
+				manager.GetComponent<InputManager> ().gameOver = true;
 			}
 
 
