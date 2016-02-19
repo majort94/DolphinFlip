@@ -9,6 +9,13 @@ public class obstacles : MonoBehaviour {
 
 	public GameObject cloud;
 
+    // Fruit
+    public int numFruit;
+    public GameObject grape;
+    public GameObject pineapple;
+    public GameObject strawberry;
+    public GameObject banana;
+    public GameObject cherry;
 
 	// Object Numbers
 	private int numHoops = 20;
@@ -41,7 +48,17 @@ public class obstacles : MonoBehaviour {
 			Vector2 pos = new Vector2 (randX, randY);
 			Instantiate (hoop, pos, Quaternion.identity);
 		}
-	
+
+        // Make Fruits
+        for (int i = 0; i < numFruit; i++)
+        {
+            float randX = Random.Range(3f, 400f);
+            float randY = Random.Range(3f, 80f);
+            Vector2 pos = new Vector2(randX, randY);
+            Instantiate(grape, pos, Quaternion.identity);
+        }
+
+
 	}
 	
 	// Update is called once per frame

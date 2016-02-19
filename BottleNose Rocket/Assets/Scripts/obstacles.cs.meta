@@ -1,10 +1,18 @@
 fileFormatVersion: 2
 guid: 56467a789e4ebd944bfc1b2709d6a428
-timeCreated: 1455288099
+timeCreated: 1455845188
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bird: {instanceID: 0}
+  - hoop: {instanceID: 0}
+  - cloud: {instanceID: 0}
+  - grape: {fileID: 178942, guid: 870b1fc4a3add2f44bf3f6631a2ab62c, type: 2}
+  - pineapple: {instanceID: 0}
+  - strawberry: {instanceID: 0}
+  - banana: {instanceID: 0}
+  - cherry: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

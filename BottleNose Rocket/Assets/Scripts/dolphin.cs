@@ -20,7 +20,7 @@ public class dolphin : MonoBehaviour {
 
 
 
-
+    public float fruitBonus = 0;
 	private float score = 0;
 	private float maxHeight = 0f;
 	public Text scoreText;
