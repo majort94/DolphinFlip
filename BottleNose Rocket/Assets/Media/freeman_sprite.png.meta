@@ -1,0 +1,330 @@
+fileFormatVersion: 2
+guid: 83c5893b7b293d04d9bcd14c5cb1d837
+timeCreated: 1455841665
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: freeman_sprite_0
+    21300002: freeman_sprite_1
+    21300004: freeman_sprite_2
+    21300006: freeman_sprite_3
+    21300008: freeman_sprite_4
+    21300010: freeman_sprite_5
+    21300012: freeman_sprite_6
+    21300014: freeman_sprite_7
+    21300016: freeman_sprite_8
+    21300018: freeman_sprite_9
+    21300020: freeman_sprite_10
+    21300022: freeman_sprite_11
+    21300024: freeman_sprite_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: freeman_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 3057
+        width: 116
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31.731514, y: 48.69275}
+        - {x: -30.268486, y: 48.69275}
+        - {x: -36.268486, y: 40.69275}
+        - {x: -36.268486, y: -9.307251}
+        - {x: -24.268486, y: -48.30725}
+        - {x: 20.731514, y: -48.30725}
+        - {x: 34.731514, y: -30.307251}
+        - {x: 36.731514, y: -26.307251}
+        - {x: 36.731514, y: 33.69275}
+    - name: freeman_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 3028
+        width: 116
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.908478, y: 48.69519}
+        - {x: -35.908478, y: -24.30481}
+        - {x: -14.908478, y: -48.30481}
+        - {x: 20.091522, y: -48.30481}
+        - {x: 34.091522, y: -43.30481}
+        - {x: 37.091522, y: -36.30481}
+        - {x: 37.091522, y: 33.69519}
+        - {x: 33.091522, y: 48.69519}
+    - name: freeman_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 3004
+        width: 116
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.072113, y: 48.80066}
+        - {x: -29.927887, y: 48.80066}
+        - {x: -35.927887, y: 38.80066}
+        - {x: -35.927887, y: -39.19934}
+        - {x: -13.927887, y: -48.19934}
+        - {x: 30.072113, y: -48.19934}
+        - {x: 32.072113, y: -46.19934}
+        - {x: 37.072113, y: -22.19934}
+        - {x: 37.072113, y: 38.80066}
+    - name: freeman_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 2980
+        width: 118
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.791504, y: 49.406128}
+        - {x: -36.791504, y: 46.406128}
+        - {x: -36.791504, y: -27.593872}
+        - {x: -15.791504, y: -48.593872}
+        - {x: 32.208496, y: -48.593872}
+        - {x: 37.208496, y: -19.593872}
+        - {x: 37.208496, y: 39.406128}
+        - {x: 30.208496, y: 49.406128}
+    - name: freeman_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 2951
+        width: 116
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.41394, y: 48.908447}
+        - {x: -36.41394, y: 45.908447}
+        - {x: -36.41394, y: -20.091553}
+        - {x: -22.41394, y: -48.091553}
+        - {x: 25.58606, y: -48.091553}
+        - {x: 31.58606, y: -44.091553}
+        - {x: 36.58606, y: -27.091553}
+        - {x: 36.58606, y: 31.908447}
+        - {x: 29.58606, y: 48.908447}
+    - name: freeman_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 2951
+        width: 118
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.96118, y: 47.908447}
+        - {x: -36.96118, y: 38.908447}
+        - {x: -36.96118, y: -42.091553}
+        - {x: -35.96118, y: -45.091553}
+        - {x: -32.96118, y: -47.091553}
+        - {x: 27.038818, y: -47.091553}
+        - {x: 37.03882, y: -26.091553}
+        - {x: 37.03882, y: 40.908447}
+        - {x: 29.038818, y: 47.908447}
+    - name: freeman_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 2956
+        width: 118
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 38.491516, y: 40.011475}
+        - {x: 35.491516, y: 48.011475}
+        - {x: -31.508484, y: 48.011475}
+        - {x: -36.508484, y: 34.011475}
+        - {x: -36.508484, y: -30.988525}
+        - {x: -22.508484, y: -46.988525}
+        - {x: 11.491516, y: -46.988525}
+        - {x: 16.491516, y: -43.988525}
+        - {x: 27.491516, y: -32.988525}
+        - {x: 38.491516, y: -19.988525}
+    - name: freeman_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 2953
+        width: 118
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31.185486, y: 48.14966}
+        - {x: -32.814514, y: 48.14966}
+        - {x: -36.814514, y: 33.14966}
+        - {x: -36.814514, y: -34.85034}
+        - {x: -32.814514, y: -44.85034}
+        - {x: -24.814514, y: -46.85034}
+        - {x: 22.185486, y: -46.85034}
+        - {x: 35.185486, y: -36.85034}
+        - {x: 37.185486, y: -21.850342}
+        - {x: 37.185486, y: 45.14966}
+    - name: freeman_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 2956
+        width: 118
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.861816, y: 49.511475}
+        - {x: -36.861816, y: 36.511475}
+        - {x: -36.861816, y: -22.488525}
+        - {x: -17.861816, y: -48.488525}
+        - {x: 29.138184, y: -48.488525}
+        - {x: 37.138184, y: -33.488525}
+        - {x: 37.138184, y: 40.511475}
+        - {x: 35.138184, y: 49.511475}
+    - name: freeman_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 1802
+        y: 2980
+        width: 116
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32.167847, y: 49.406128}
+        - {x: -36.167847, y: 45.406128}
+        - {x: -36.167847, y: -26.593872}
+        - {x: -34.167847, y: -43.593872}
+        - {x: -26.167847, y: -48.593872}
+        - {x: 31.832153, y: -48.593872}
+        - {x: 36.832153, y: -32.593872}
+        - {x: 36.832153, y: 44.406128}
+        - {x: 30.832153, y: 49.406128}
+    - name: freeman_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 1955
+        y: 3004
+        width: 117
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.784912, y: 48.80066}
+        - {x: -34.215088, y: 48.80066}
+        - {x: -36.215088, y: 38.80066}
+        - {x: -36.215088, y: -41.19934}
+        - {x: -35.215088, y: -45.19934}
+        - {x: -23.215088, y: -48.19934}
+        - {x: 21.784912, y: -48.19934}
+        - {x: 31.784912, y: -40.19934}
+        - {x: 36.784912, y: -19.19934}
+        - {x: 36.784912, y: 43.80066}
+    - name: freeman_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 2109
+        y: 3024
+        width: 118
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.641846, y: 49.71277}
+        - {x: -36.641846, y: 34.71277}
+        - {x: -36.641846, y: -16.287231}
+        - {x: -33.641846, y: -43.28723}
+        - {x: -18.641846, y: -48.28723}
+        - {x: 15.358154, y: -48.28723}
+        - {x: 38.358154, y: -28.287231}
+        - {x: 38.358154, y: 49.71277}
+    - name: freeman_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 2262
+        y: 3004
+        width: 118
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 29.310913, y: 49.30066}
+        - {x: -27.689087, y: 49.30066}
+        - {x: -35.689087, y: 37.30066}
+        - {x: -36.689087, y: 26.30066}
+        - {x: -36.689087, y: -34.69934}
+        - {x: -14.689087, y: -48.69934}
+        - {x: 31.310913, y: -48.69934}
+        - {x: 34.310913, y: -41.69934}
+        - {x: 38.310913, y: -21.69934}
+        - {x: 38.310913, y: 38.30066}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
