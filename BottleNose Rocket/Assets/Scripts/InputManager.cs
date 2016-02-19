@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour {
 	public Camera camera1;
 	public GameObject dolphin;
 
-	private bool debug = true;
+	private bool debug = false;
 
 	private bool inAir = false;
 
@@ -21,6 +21,8 @@ public class InputManager : MonoBehaviour {
 	private float particleTimeStamp = 0f;
 	public ParticleSystem smoke;
 	public ParticleSystem smoke2;
+	public GameObject fire;
+
 
 	public bool gameOver = false;
 
@@ -29,7 +31,7 @@ public class InputManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		clicks = 3;
+		clicks = 5;
 		if (debug) {
 			clicks = 100;
 		}
@@ -74,6 +76,7 @@ public class InputManager : MonoBehaviour {
 				dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				
 			}
+		fire.SetActive (true);
 		smoke.Play ();
 		smoke2.Play ();
 		particleTimeStamp = Time.timeSinceLevelLoad;
@@ -87,14 +90,14 @@ public class InputManager : MonoBehaviour {
 
 	void Update(){
 		float rotationAngle = Mathf.Rad2Deg * Mathf.Atan2(Input.acceleration.y, Mathf.Abs(Input.acceleration.x)); 
-		rotation.text = "rotation: " + rotationAngle;
+		//rotation.text = "rotation: " + rotationAngle;
 		if (EventSystem.current.IsPointerOverGameObject()) { // UI elements getting the hit/hover
 			Debug.Log("UI");
 		}
 
 
 
-		if (((Input.GetMouseButtonUp (0)) || ((Input.touchCount > 0) && Input.GetTouch (0).phase == TouchPhase.Began)) && (clicks > 0) && !beenTouched) {
+		if (((Input.GetMouseButtonUp (0)) || ((Input.touchCount > 0) && Input.GetTouch (0).phase == TouchPhase.Began)) && ((clicks > 0) || gameOver)) {
 
 			if (gameOver) {
 				Debug.Log ("overrr");
@@ -119,8 +122,9 @@ public class InputManager : MonoBehaviour {
 		if ((Time.timeSinceLevelLoad > (particleTimeStamp + .5f)) && (particleTimeStamp != 0)) {
 			smoke.Pause ();
 			smoke2.Pause ();
-			smoke.Clear ();
-			smoke2.Clear ();
+			fire.SetActive (false);
+			//smoke.Clear ();
+			//smoke2.Clear ();
 		}
 	}
 

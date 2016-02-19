@@ -13,6 +13,7 @@ public class collide : MonoBehaviour {
 	public GameObject hoop;
 	public GameObject bird;
 	public Transform camera1;
+	public GameObject plane;
 
 	private bool debug = true;
 
@@ -38,7 +39,10 @@ public class collide : MonoBehaviour {
 		if (temp.gameObject.GetType() == bird.GetType()) {
 			dolphin.GetComponent<dolphin> ().onHit ();
 			gameManager.GetComponent<InputManager> ().onHit ();
-			Debug.Log ("YESSSS");
+		}
+		if (temp.gameObject.GetType() == plane.GetType()) {
+			dolphin.GetComponent<dolphin> ().onHit ();
+			gameManager.GetComponent<InputManager> ().onHit ();
 		}
 
 		camera1.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);

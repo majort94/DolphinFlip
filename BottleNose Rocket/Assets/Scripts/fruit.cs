@@ -12,14 +12,15 @@ public class fruit : MonoBehaviour {
         dolphin = GameObject.Find("dolphin");
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == dolphin)
         {
             //increase score
             dolphin.GetComponent<dolphin>().fruitBonus += reward;
+			dolphin.GetComponent<dolphin> ().setScore ();
             //destroy self
-            Destroy (gameObject);
+			Destroy (gameObject);
         }
     }
 }

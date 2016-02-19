@@ -21,7 +21,7 @@ public class dolphin : MonoBehaviour {
 
 
 
-    public float fruitBonus = 0;
+    public int fruitBonus = 0;
 	private float score = 0;
 	private float maxHeight = 0f;
 	public Text scoreText;
@@ -43,8 +43,7 @@ public class dolphin : MonoBehaviour {
 		if(gameStart){
 			if (dolphinTransform.position.y > maxHeight) {
 				maxHeight = dolphinTransform.position.y;
-				score = maxHeight * 3.5f + fruitBonus;
-				scoreText.text = "Score: " + (int) score;
+				setScore ();
 
 			}
 			if ((dolphinTransform.position.y < 0) && (!underSea)) {
@@ -90,6 +89,11 @@ public class dolphin : MonoBehaviour {
 		rb.velocity = temp  * Time.fixedDeltaTime;
 		//rocket.velocity = temp;
 
+	}
+
+	public void setScore(){
+		score = (maxHeight * 3.5f) + fruitBonus;
+		scoreText.text = "Score: " + (int) score;
 	}
 
 

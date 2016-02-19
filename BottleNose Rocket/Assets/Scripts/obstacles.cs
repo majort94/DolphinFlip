@@ -17,16 +17,19 @@ public class obstacles : MonoBehaviour {
     public GameObject banana;
     public GameObject cherry;
 
+	public GameObject plane;
+
 	// Object Numbers
 	private int numHoops = 20;
-	private int numClouds = 25;
+	private int numClouds = 10;
+	private int numPlanes = 7;
 
 
 	// Use this for initialization
 	void Start () {
 		// Make Birds
 		for (int i = 0; i < numBirds; i++) {
-			float randX = Random.Range (3f, 400f);
+			float randX = Random.Range (3f, 600f);
 			float randY = Random.Range (3f, 80f);
 			Vector2 pos = new Vector3 (randX, randY, 99f );
 			Instantiate (bird, pos, Quaternion.identity);
@@ -35,16 +38,25 @@ public class obstacles : MonoBehaviour {
 		// Make Clouds
 
 		for (int i = 0; i < numClouds; i++) {
-			float randX = Random.Range (20f, 500f);
+			float randX = Random.Range (20f, 600f);
 			float randY = Random.Range (20f, 100f);
 			Vector2 pos = new Vector3 (randX, randY, 99f );
 			Instantiate (cloud, pos, Quaternion.identity);
 		}
 
+		// Make Planes
+
+		for (int i = 0; i < numPlanes; i++) {
+			float randX = Random.Range (20f, 600f);
+			float randY = Random.Range (20f, 100f);
+			Vector2 pos = new Vector3 (randX, randY, 99f );
+			Instantiate (plane, pos, Quaternion.identity);
+		}
+
 		// Make Hoops
 		for (int i = 0; i < numHoops; i++) {
-			float randX = Random.Range (10f, 400f);
-			float randY = Random.Range (10f, 80f);
+			float randX = Random.Range (10f, 600f);
+			float randY = Random.Range (10f, 200f);
 			Vector2 pos = new Vector2 (randX, randY);
 			Instantiate (hoop, pos, Quaternion.identity);
 		}
@@ -53,7 +65,7 @@ public class obstacles : MonoBehaviour {
 		for (int i = 0; i < numFruit; i++)
 		{
 			float randX = Random.Range(3f, 400f);
-			float randY = Random.Range(3f, 80f);
+			float randY = Random.Range(7f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(grape, pos, Quaternion.identity);
 		}
@@ -62,7 +74,7 @@ public class obstacles : MonoBehaviour {
 		for (int i = 0; i < numFruit; i++)
 		{
 			float randX = Random.Range(3f, 400f);
-			float randY = Random.Range(3f, 80f);
+			float randY = Random.Range(3f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(pineapple, pos, Quaternion.identity);
 		}
@@ -71,7 +83,7 @@ public class obstacles : MonoBehaviour {
 		for (int i = 0; i < numFruit; i++)
 		{
 			float randX = Random.Range(3f, 400f);
-			float randY = Random.Range(3f, 80f);
+			float randY = Random.Range(3f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(strawberry, pos, Quaternion.identity);
 		}
@@ -81,7 +93,7 @@ public class obstacles : MonoBehaviour {
 		for (int i = 0; i < numFruit; i++)
 		{
 			float randX = Random.Range(3f, 400f);
-			float randY = Random.Range(3f, 80f);
+			float randY = Random.Range(3f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(banana, pos, Quaternion.identity);
 		}
@@ -90,7 +102,7 @@ public class obstacles : MonoBehaviour {
 		for (int i = 0; i < numFruit; i++)
 		{
 			float randX = Random.Range(3f, 400f);
-			float randY = Random.Range(3f, 80f);
+			float randY = Random.Range(3f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(cherry, pos, Quaternion.identity);
 		}
