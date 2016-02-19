@@ -41,7 +41,7 @@ public class dolphin : MonoBehaviour {
 		if(gameStart){
 			if (dolphinTransform.position.y > maxHeight) {
 				maxHeight = dolphinTransform.position.y;
-				score = maxHeight * 3.5f;
+				score = maxHeight * 3.5f + fruitBonus;
 				scoreText.text = "Score: " + (int) score;
 
 			}
