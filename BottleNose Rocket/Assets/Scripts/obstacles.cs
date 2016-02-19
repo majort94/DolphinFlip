@@ -49,14 +49,51 @@ public class obstacles : MonoBehaviour {
 			Instantiate (hoop, pos, Quaternion.identity);
 		}
 
-        // Make Fruits
-        for (int i = 0; i < numFruit; i++)
-        {
-            float randX = Random.Range(3f, 400f);
-            float randY = Random.Range(3f, 80f);
-            Vector2 pos = new Vector2(randX, randY);
-            Instantiate(grape, pos, Quaternion.identity);
-        }
+		// Make Fruits
+		for (int i = 0; i < numFruit; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 80f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(grape, pos, Quaternion.identity);
+		}
+
+		// Make Fruits
+		for (int i = 0; i < numFruit; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 80f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(pineapple, pos, Quaternion.identity);
+		}
+
+		// Make Fruits
+		for (int i = 0; i < numFruit; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 80f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(strawberry, pos, Quaternion.identity);
+		}
+
+
+		// Make Fruits
+		for (int i = 0; i < numFruit; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 80f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(banana, pos, Quaternion.identity);
+		}
+
+		// Make Fruits
+		for (int i = 0; i < numFruit; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 80f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(cherry, pos, Quaternion.identity);
+		}
 
 
 	}
