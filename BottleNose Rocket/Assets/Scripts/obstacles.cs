@@ -12,7 +12,7 @@ public class obstacles : MonoBehaviour {
 
 	// Object Numbers
 	private int numHoops = 20;
-	private int numClouds = 50;
+	private int numClouds = 25;
 
 
 	// Use this for initialization
