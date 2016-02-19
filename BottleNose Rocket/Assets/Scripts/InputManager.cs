@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour {
 
 	private bool beenTouched = false;
 	private float rocketTimeStamp = 0f;
+	public GameObject smoke;
 
 
 	public Text rotation;
@@ -71,7 +72,7 @@ public class InputManager : MonoBehaviour {
 				dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				rocketTimeStamp = Time.timeSinceLevelLoad;
 			}
-
+		//smoke.GetComponent<ParticleSystems> ().play ();
 		dolphin.GetComponent<dolphin> ().gameStart = true;
 			inAir = true;
 		//}
