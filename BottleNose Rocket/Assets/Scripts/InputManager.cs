@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class InputManager : MonoBehaviour {
 
+    public GameObject powerMeter;
+
 	public Rigidbody2D rocketBody;
 	public Rigidbody2D dolphinBody;
 	public int clicks;
@@ -72,9 +74,10 @@ public class InputManager : MonoBehaviour {
 				Debug.Log ("in air thrust " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
 			} else {
 				Debug.Log ("orig thrust:  " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
-				rocketBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-				dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-				
+                powerMeter.GetComponent<powermeter>().looping = false;
+                float ratio = 1.5f - Mathf.Abs(powerMeter.transform.rotation.z);
+				rocketBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust * ratio, ForceMode2D.Impulse);
+				dolphinBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust * ratio, ForceMode2D.Impulse);
 			}
 		fire.SetActive (true);
 		smoke.Play ();
