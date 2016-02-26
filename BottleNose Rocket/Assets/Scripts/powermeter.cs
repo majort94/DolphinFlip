@@ -14,11 +14,11 @@ public class powermeter : MonoBehaviour {
 	void Update () {
 	    if (looping)
         {
-            if (transform.rotation.z < -0.41f)
+            if (transform.rotation.z < -0.38f)
             {
                 switchRotate = -1;
             }
-            if (transform.rotation.z > 0.41f)
+            if (transform.rotation.z > 0.38f)
             {
                 switchRotate = 1;
             }
