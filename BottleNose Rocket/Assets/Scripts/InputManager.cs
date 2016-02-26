@@ -52,8 +52,8 @@ public class InputManager : MonoBehaviour {
 			clicks--;
 			clickText.text = clicks + " clicks remaining";
 
-			rocketBody.gravityScale = .5f;
-			dolphinBody.gravityScale = .5f;
+			rocketBody.gravityScale = .3f;
+			dolphinBody.gravityScale = .3f;
 
 
 			// while in the air

@@ -41,6 +41,12 @@ public class hoop : MonoBehaviour {
 		hoopTransform.rotation = Quaternion.Euler (rotateX, rotateY, rotateZ);
 	}
 
+	public void loopClear(){
+		if ((hoopTransform.position.x > 139) && (hoopTransform.position.x < 159)) {
+			Destroy (gameObject);
+		}
+	}
+
 
 		
 }

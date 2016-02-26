@@ -7,9 +7,11 @@ public class fruit : MonoBehaviour {
 
     //References
     public GameObject dolphin;
+	private Transform fruitTransform;
 
 	void Start () {
         dolphin = GameObject.Find("dolphin");
+		fruitTransform = GetComponent<Transform> ();
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -23,4 +25,10 @@ public class fruit : MonoBehaviour {
 			Destroy (gameObject);
         }
     }
+
+	public void loopClear(){
+		if ((fruitTransform.position.x > 139) && (fruitTransform.position.x < 159)) {
+			Destroy (gameObject);
+		}
+	}
 }
