@@ -41,6 +41,9 @@ public class dolphin : MonoBehaviour {
 	void FixedUpdate(){
 
 		if(gameStart){
+			if (dolphinTransform.position.x >= 1004.5) {
+				dolphinTransform.position = new Vector3 (151, dolphinTransform.position.y, dolphinTransform.position.z);
+			}
 			if (dolphinTransform.position.y > maxHeight) {
 				maxHeight = dolphinTransform.position.y;
 				setScore ();
