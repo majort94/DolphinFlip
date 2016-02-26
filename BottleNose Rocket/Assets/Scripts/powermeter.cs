@@ -22,7 +22,7 @@ public class powermeter : MonoBehaviour {
             {
                 switchRotate = 1;
             }
-            transform.Rotate(Vector3.forward * (-1) * switchRotate * (1.5f + 2 * transform.rotation.z));
+            transform.Rotate(Vector3.forward * (-1) * switchRotate * (4f -  8f * Mathf.Abs(transform.rotation.z)));
         }
 	}
 }
