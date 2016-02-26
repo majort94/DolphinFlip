@@ -16,6 +16,7 @@ public class obstacles : MonoBehaviour {
     public GameObject strawberry;
     public GameObject banana;
     public GameObject cherry;
+	public GameObject flock;
 
 	public GameObject plane;
 
@@ -23,6 +24,7 @@ public class obstacles : MonoBehaviour {
 	private int numHoops = 20;
 	private int numClouds = 10;
 	private int numPlanes = 7;
+	private int numFlocks = 0;
 
 
 	// Use this for initialization
@@ -105,6 +107,31 @@ public class obstacles : MonoBehaviour {
 			float randY = Random.Range(3f, 200f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(cherry, pos, Quaternion.identity);
+		}
+
+		// Make Flocks
+		for (int i = 0; i < numFlocks; i++)
+		{
+			float randX = Random.Range(3f, 400f);
+			float randY = Random.Range(3f, 200f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(flock, pos, Quaternion.identity);
+		}
+
+
+
+	}
+
+
+	public void makeLoopReady(){
+		foreach(GameObject fruit in GameObject.FindGameObjectsWithTag("fruit"))
+		{
+			fruit.GetComponent<fruit> ().loopClear ();
+		}
+
+		foreach(GameObject hoop in GameObject.FindGameObjectsWithTag("hoop"))
+		{
+			hoop.GetComponent<hoop> ().loopClear ();
 		}
 
 

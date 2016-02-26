@@ -27,6 +27,8 @@ public class dolphin : MonoBehaviour {
 	public Text scoreText;
 	public GameObject gameOver;
 
+	public bool loopReady = false;
+
 //	private int lives = 1;
 
 
@@ -41,8 +43,17 @@ public class dolphin : MonoBehaviour {
 	void FixedUpdate(){
 
 		if(gameStart){
+			if (dolphinTransform.position.x <= -5) {
+				rb.velocity = new Vector2 (0, 0);
+			}
 			if (dolphinTransform.position.x >= 1004.5) {
 				dolphinTransform.position = new Vector3 (151, dolphinTransform.position.y, dolphinTransform.position.z);
+				//rocket.GetComponent<Transform>().position = new Vector3 (151, rocket.GetComponent<Transform>().position.y, rocket.GetComponent<Transform>().position.z);
+			}
+			if ((dolphinTransform.position.x >= 500) && !loopReady) {
+				loopReady = true;
+				manager.GetComponent<obstacles> ().makeLoopReady ();
+
 			}
 			if (dolphinTransform.position.y > maxHeight) {
 				maxHeight = dolphinTransform.position.y;
@@ -51,8 +62,8 @@ public class dolphin : MonoBehaviour {
 			}
 			if ((dolphinTransform.position.y < 0) && (!underSea)) {
 				underSea = true;
-				rb.gravityScale = .3f;
-				rocket.gravityScale = .3f;
+				rb.gravityScale = .2f;
+				rocket.gravityScale = .2f;
 				Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
 				rb.velocity = temp  * Time.fixedDeltaTime;
 				rocket.velocity = temp  * Time.fixedDeltaTime;
