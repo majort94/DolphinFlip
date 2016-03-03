@@ -22,10 +22,11 @@ public class dolphin : MonoBehaviour {
 
 
     public int fruitBonus = 0;
-	private float score = 0;
+	public float score = 0;
 	private float maxHeight = 0f;
 	public Text scoreText;
 	public GameObject gameOver;
+    public GameObject highScores;
 
 	public bool loopReady = true;
 	 
@@ -82,6 +83,7 @@ public class dolphin : MonoBehaviour {
 				rb.velocity = Vector2.zero;
 				rocket.velocity = Vector2.zero;
 				gameOver.SetActive (true);
+                highScores.SetActive(true);
 				manager.GetComponent<InputManager> ().gameOver = true;
 			}
 
