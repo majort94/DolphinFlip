@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour {
 	public ParticleSystem smoke;
 	public ParticleSystem smoke2;
 	public GameObject fire;
+	public GameObject pause;
 
 
 	public bool gameOver = false;
@@ -33,7 +34,7 @@ public class InputManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		clicks = 5;
+		clicks = 10;
 		if (debug) {
 			clicks = 100;
 		}
@@ -41,6 +42,11 @@ public class InputManager : MonoBehaviour {
 	public void onHit(){
 		clicks = 0;
 		clickText.text = clicks + " clicks remaining";
+	}
+	public void onRocket(){
+		clicks++;
+		clickText.text = clicks + " clicks remaining";
+		//gameOver = false;
 	}
 	
 	// Update is called once per frame
@@ -68,12 +74,13 @@ public class InputManager : MonoBehaviour {
 
 				//rocketBody.AddForce (Vector2.Scale(new Vector2 (1, 1), direction) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				//dolphin.AddForce (Vector2.Scale(new Vector2 (1, 1), direction) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-
+				if (dolphin.GetComponent<Rigidbody2D> ().velocity.y < 0) {
+					dolphin.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+					rocketBody.velocity = Vector2.zero;
+				}
 				rocketBody.AddForce (direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				dolphinBody.AddForce ( direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-				Debug.Log ("in air thrust " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
 			} else {
-				Debug.Log ("orig thrust:  " + rocket.GetComponent<rocket> ().thrust + " time " + Time.timeSinceLevelLoad);
                 powerMeter.GetComponent<powermeter>().looping = false;
                 float ratio = 1.5f - Mathf.Abs(powerMeter.transform.rotation.z);
 				rocketBody.AddForce (new Vector2 (.7f, 1) * rocket.GetComponent<rocket> ().thrust * ratio, ForceMode2D.Impulse);
@@ -94,27 +101,35 @@ public class InputManager : MonoBehaviour {
 	void Update(){
 		float rotationAngle = Mathf.Rad2Deg * Mathf.Atan2(Input.acceleration.y, Mathf.Abs(Input.acceleration.x)); 
 		//rotation.text = "rotation: " + rotationAngle;
-		if (EventSystem.current.IsPointerOverGameObject()) { // UI elements getting the hit/hover
-			Debug.Log("UI");
-		}
 
 
-
-		if (((Input.GetMouseButtonUp (0)) || ((Input.touchCount > 0) && Input.GetTouch (0).phase == TouchPhase.Began)) && ((clicks > 0) || gameOver)) {
+		if ((((Input.touchCount > 0) && Input.GetTouch (0).phase == TouchPhase.Began)) && ((clicks > 0) || gameOver)) {
 
 			if (gameOver) {
-				Debug.Log ("overrr");
 				this.GetComponent<UILoadLevel> ().LoadScene (1);
+				dolphin.GetComponent<dolphin> ().gameStart = false;
 			}
-			Vector3 mousePos = camera1.ScreenToWorldPoint (Input.mousePosition);
+			Vector3 mousePos;//camera1.ScreenToWorldPoint (Input.mousePosition);
 			//Touch[] touches = Input.touches;
+			Vector2 mousePos2D;
+			Vector2 direction;
 			if (Input.touches.Length > 0) {
+				if (Input.touchCount > 1) {
+					Time.timeScale = 0;
+					pause.SetActive (true);
+					return;
+				}
+				if (Time.timeScale == 0) {
+					pause.SetActive(false);
+					Time.timeScale = 1;
+					return;
+				}
 				mousePos = camera1.ScreenToWorldPoint (Input.touches [0].position);
+				mousePos2D = new Vector2 (mousePos.x, mousePos.y);
+				direction = mousePos2D - dolphinBody.position;
+				direction.Normalize ();
+				boost (direction);
 			}
-			Vector2 mousePos2D = new Vector2 (mousePos.x, mousePos.y);
-			Vector2 direction = mousePos2D - dolphinBody.position;
-			direction.Normalize ();
-			boost (direction);
 		}
 
 		resetParticles ();

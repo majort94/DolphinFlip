@@ -16,10 +16,10 @@ public class plane : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		if (GetComponent<Transform> ().position.x < 170) {
+	void FixedUpdate () {
+		if ((GetComponent<Transform> ().position.x < (GameObject.Find ("dolphin").GetComponent<Transform>().position.x - 40)) || ((GetComponent<Transform> ().position.x > (GameObject.Find ("dolphin").GetComponent<Transform>().position.x + 400)))) {
 			if (GameObject.Find ("dolphin").GetComponent<dolphin>().loopReady) {
-				GetComponent<Transform> ().position = new Vector3 (900, GetComponent<Transform> ().position.y, GetComponent<Transform> ().position.z);
+				GetComponent<Transform> ().position = new Vector3 (GameObject.Find ("dolphin").GetComponent<Transform>().position.x + 40, GetComponent<Transform> ().position.y, GetComponent<Transform> ().position.z);
 			}
 		}
 

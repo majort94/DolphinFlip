@@ -26,19 +26,30 @@ public class hoop : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D temp){
 		//Debug.Log ("Hoop, " + temp.gameObject);
 		if (temp.gameObject == dolphin) {
-			rocketBody.AddForce (new Vector2 (.5f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-			dolphinBody.AddForce (new Vector2 (.5f, 1) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-		Debug.Log ("Hoop, " + temp.gameObject);
+			if (dolphin.GetComponent<Rigidbody2D> ().velocity.y < 0) {
+				dolphin.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+				rocket.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+			}
+			rocketBody.AddForce (new Vector2 (.25f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+			dolphinBody.AddForce (new Vector2 (.25f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 		}
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate(){
+		if(((hoopTransform.position.x < (dolphin.GetComponent<Transform>().position.x + 20)) && (hoopTransform.position.x > (dolphin.GetComponent<Transform>().position.x - 20))) && ((hoopTransform.position.y < (dolphin.GetComponent<Transform>().position.y + 20) && (hoopTransform.position.y > (dolphin.GetComponent<Transform>().position.y - 20))))){
 		rotateX -= 0;
 		rotateY -= 2;
 		rotateZ -= 2;
 
 		hoopTransform.rotation = Quaternion.Euler (rotateX, rotateY, rotateZ);
+		}
+
+		if ((GetComponent<Transform> ().position.x < (GameObject.Find ("dolphin").GetComponent<Transform>().position.x - 40)) || ((GetComponent<Transform> ().position.x > (GameObject.Find ("dolphin").GetComponent<Transform>().position.x + 400)))) {
+			if (dolphin.GetComponent<dolphin>().loopReady) {
+				GetComponent<Transform> ().position = new Vector3 (GameObject.Find ("dolphin").GetComponent<Transform>().position.x + 40, GetComponent<Transform> ().position.y, GetComponent<Transform> ().position.z);
+			}
+		}
 	}
 
 	public void loopClear(){

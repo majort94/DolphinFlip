@@ -13,7 +13,7 @@ public class dolphin : MonoBehaviour {
 	private Vector3 camVect;
 	private Vector3 canvasVect;
 	public float floor = -6.5f;
-
+	private bool leftBounds = false;
 	public bool gameStart = false;
 
 	public GameObject rocketObj;
@@ -27,8 +27,8 @@ public class dolphin : MonoBehaviour {
 	public Text scoreText;
 	public GameObject gameOver;
 
-	public bool loopReady = false;
-
+	public bool loopReady = true;
+	 
 //	private int lives = 1;
 
 
@@ -43,16 +43,20 @@ public class dolphin : MonoBehaviour {
 	void FixedUpdate(){
 
 		if(gameStart){
-			if (dolphinTransform.position.x <= -5) {
-				rb.velocity = new Vector2 (0, 0);
+			if ((dolphinTransform.position.x <= -2) && !leftBounds) {
+				Vector2 temp = new Vector2 (0f, -12f);
+				rb.velocity = temp * Time.fixedDeltaTime;
+				leftBounds = true;
+				manager.GetComponent<InputManager>().clicks = 0;
 			}
+
 			if (dolphinTransform.position.x >= 1004.5) {
 				dolphinTransform.position = new Vector3 (151, dolphinTransform.position.y, dolphinTransform.position.z);
 				//rocket.GetComponent<Transform>().position = new Vector3 (151, rocket.GetComponent<Transform>().position.y, rocket.GetComponent<Transform>().position.z);
 			}
 			if ((dolphinTransform.position.x >= 500) && !loopReady) {
 				loopReady = true;
-				manager.GetComponent<obstacles> ().makeLoopReady ();
+				//manager.GetComponent<obstacles> ().makeLoopReady ();
 
 			}
 			if (dolphinTransform.position.y > maxHeight) {
@@ -62,6 +66,7 @@ public class dolphin : MonoBehaviour {
 			}
 			if ((dolphinTransform.position.y < 0) && (!underSea)) {
 				underSea = true;
+				GetComponent<AudioSource>().Play();
 				rb.gravityScale = .2f;
 				rocket.gravityScale = .2f;
 				Vector2 temp = new Vector2 (rb.velocity.x * .1f , rb.velocity.y * .1f);
@@ -84,8 +89,8 @@ public class dolphin : MonoBehaviour {
 		}
 
 
-		camVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,-10);
-		canvasVect = new Vector3(dolphinTransform.position.x,dolphinTransform.position.y,0);
+		camVect = new Vector3(dolphinTransform.position.x + 10,dolphinTransform.position.y,-10);
+		canvasVect = new Vector3(dolphinTransform.position.x + 10,dolphinTransform.position.y,0);
 		camera1.position = camVect;
 		canvas.position = canvasVect;
 		camera1.rotation = Quaternion.Euler (0.0f, 0.0f, 0.0f);

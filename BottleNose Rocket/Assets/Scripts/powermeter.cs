@@ -11,7 +11,7 @@ public class powermeter : MonoBehaviour {
 	    
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 	    if (looping)
         {
             if (transform.rotation.z < -0.38f)

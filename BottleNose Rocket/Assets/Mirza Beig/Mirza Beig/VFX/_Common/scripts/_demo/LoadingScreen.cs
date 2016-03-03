@@ -113,8 +113,8 @@ namespace MirzaBeig
                     {
                         loadingImageFill.fillAmount = 1.0f;
                         loadingText.text = "DONE! Loading Demo...";
-
-                        Application.LoadLevel(1);
+						Debug.Log ("FUCK");	
+                        //Application.LoadLevel(1);
                     }
                 }
 
