@@ -35,13 +35,13 @@ public class highScores : MonoBehaviour {
         }
 
         // check if new high score, and if so then place in respective rank
-        for (int i = highScores.Length; i > 0; i--)
+        for (int i = highScores.Length; i >= 0; i--)
         {
-            if (score > highScores[i])
+            if (score > highScores[i - 1])
             {
                 if (i != 1)
                 {
-                    if (!(score > highScores[i - 1]))
+                    if (!(score > highScores[i - 2]))
                     {
                         scoreObjects[i].GetComponent<Text>().text = score.ToString();
                         PlayerPrefs.SetInt("Score" + i.ToString(), score);
