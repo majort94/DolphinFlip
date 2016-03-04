@@ -7,6 +7,7 @@ public class asteroid : MonoBehaviour {
 	private Rigidbody2D rb;
 	private float speed;
 	private Transform transform;
+
 	// Use this for initialization
 	void Start () {
 		//speed = Random.Range (2f, 10f);
