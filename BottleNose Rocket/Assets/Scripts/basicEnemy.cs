@@ -10,6 +10,7 @@ public class basicEnemy : MonoBehaviour {
 	private GameObject manager;
 	private bool isHit = false;
 	private Transform transform;
+	public Sprite sprite;
 	// Use this for initialization
 	void Start () {
 		speed = Random.Range (0.05f, .3f);
@@ -50,6 +51,12 @@ public class basicEnemy : MonoBehaviour {
 			dolphin.GetComponent<dolphin>().onHit();
 			manager.GetComponent<InputManager> ().onHit ();
 			isHit = true;
+			if (GetComponent<AudioSource> () != null) {
+				GetComponent<AudioSource> ().Play ();
+			}
+			if (sprite != null) {
+				GetComponent<SpriteRenderer> ().sprite = sprite;
+			} 
 		}
 	}
 }
