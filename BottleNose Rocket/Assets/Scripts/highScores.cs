@@ -13,23 +13,35 @@ public class highScores : MonoBehaviour {
     public GameObject score5Object;
     
 	void Start () {
-	}
-
-    void Initialize()
-    {
         //Set References
         int score = (int)dolphin.GetComponent<dolphin>().score;
-        int[] highScores = { PlayerPrefs.GetInt("Score1"), PlayerPrefs.GetInt("Score2"), PlayerPrefs.GetInt("Score3"), PlayerPrefs.GetInt("Score4"), PlayerPrefs.GetInt("Score5") };
+        int[] highScores = new int[5];
         GameObject[] scoreObjects = { score1Object, score2Object, score3Object, score4Object, score5Object };
 
-        // check if new high score, and if so then place in respective rank
+        //Defaults
         for (int i = 0; i < 5; i++)
+        {
+            if (PlayerPrefs.HasKey("Score" + i.ToString()))
+            {
+                highScores[i] = PlayerPrefs.GetInt("Score" + i.ToString());
+                scoreObjects[i].GetComponent<Text>().text = highScores[i].ToString();
+            }
+            else
+            {
+                highScores[i] = 0;
+                scoreObjects[i].GetComponent<Text>().text = highScores[i].ToString();
+                PlayerPrefs.SetInt("Score" + i.ToString(), highScores[i]);
+            }
+        }
+
+        // check if new high score, and if so then place in respective rank
+        for (int i = highScores.Length; i > 0; i--)
         {
             if (score > highScores[i])
             {
-                if (highScores[i + 1] != null)
+                if (i != 1)
                 {
-                    if (!(score > highScores[i + 1]))
+                    if (!(score > highScores[i - 1]))
                     {
                         scoreObjects[i].GetComponent<Text>().text = score.ToString();
                         PlayerPrefs.SetInt("Score" + i.ToString(), score);
@@ -41,12 +53,10 @@ public class highScores : MonoBehaviour {
                     PlayerPrefs.SetInt("Score" + i.ToString(), score);
                 }
             }
-            else
-            {
-                scoreObjects[i].GetComponent<Text>().text = highScores[i].ToString();
-            }
         }
-    }
+
+
+	}
 
 
 }
