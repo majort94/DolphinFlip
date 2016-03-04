@@ -33,7 +33,7 @@ public class obstacles : MonoBehaviour {
 	private int numClouds = 7;
 	private int numPlanes = 4;
 	private int numBirds = 5;
-	private int numFlocks = 0;
+	private int numFlocks = 2;
 	private int numRockets = 10;
 	private int numFreemen = 0;
 	private int numJesus = 5;
