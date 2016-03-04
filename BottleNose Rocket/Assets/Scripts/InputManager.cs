@@ -34,18 +34,18 @@ public class InputManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		clicks = 10;
+		clicks = 7;
 		if (debug) {
 			clicks = 100;
 		}
 	}
 	public void onHit(){
 		clicks = 0;
-		clickText.text = clicks + " clicks remaining";
+		clickText.text = clicks + " taps remaining";
 	}
 	public void onRocket(){
 		clicks++;
-		clickText.text = clicks + " clicks remaining";
+		clickText.text = clicks + " taps remaining";
 		//gameOver = false;
 	}
 	
@@ -58,7 +58,7 @@ public class InputManager : MonoBehaviour {
 			
 			//beenTouched = true;
 			clicks--;
-			clickText.text = clicks + " clicks remaining";
+			clickText.text = clicks + " taps remaining";
 
 			rocketBody.gravityScale = .3f;
 			dolphinBody.gravityScale = .3f;

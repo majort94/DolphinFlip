@@ -11,46 +11,58 @@ public class highScores : MonoBehaviour {
     public GameObject score3Object;
     public GameObject score4Object;
     public GameObject score5Object;
-    
+	//References
+	int score;
+	int[] highScoreList = new int[5];
+	GameObject[] scoreObjects;
+
 	void Start () {
-        //Set References
-        int score = (int)dolphin.GetComponent<dolphin>().score;
-        int[] highScores = new int[5];
-        GameObject[] scoreObjects = { score1Object, score2Object, score3Object, score4Object, score5Object };
+		//Set References
+		score = (int)dolphin.GetComponent<dolphin>().score;
+		scoreObjects = new GameObject[5];
+		scoreObjects [0] = score1Object; // = { score1Object, score2Object, score3Object, score4Object, score5Object }; 
+		scoreObjects [1] = score2Object;
+		scoreObjects [2] = score3Object;
+		scoreObjects [3] = score4Object;
+		scoreObjects [4] = score5Object;
 
         //Defaults
         for (int i = 0; i < 5; i++)
         {
-            if (PlayerPrefs.HasKey("Score" + i.ToString()))
+			if (PlayerPrefs.HasKey("Score" + (i+1).ToString()))
             {
-                highScores[i] = PlayerPrefs.GetInt("Score" + i.ToString());
-                scoreObjects[i].GetComponent<Text>().text = highScores[i].ToString();
+				highScoreList[i] = PlayerPrefs.GetInt("Score" + (i+1).ToString());
+                scoreObjects[i].GetComponent<Text>().text = highScoreList[i].ToString();
             }
             else
             {
-                highScores[i] = 0;
-                scoreObjects[i].GetComponent<Text>().text = highScores[i].ToString();
-                PlayerPrefs.SetInt("Score" + i.ToString(), highScores[i]);
+                highScoreList[i] = 0;
+                scoreObjects[i].GetComponent<Text>().text = highScoreList[i].ToString();
+				PlayerPrefs.SetInt("Score" + (i+1).ToString(), 0);
             }
         }
 
         // check if new high score, and if so then place in respective rank
-        for (int i = highScores.Length; i >= 0; i--)
+        for (int i = 5; i > 0; i--)
         {
-            if (score > highScores[i - 1])
+            if (score > highScoreList[i - 1])
             {
-                if (i != 1)
+                if (i > 1)
                 {
-                    if (!(score > highScores[i - 2]))
+                    if (score < highScoreList[i - 2])
                     {
-                        scoreObjects[i].GetComponent<Text>().text = score.ToString();
-                        PlayerPrefs.SetInt("Score" + i.ToString(), score);
+						//highScoreList[i - 1] = score;
+                        //scoreObjects[i - 1].GetComponent<Text>().text = score.ToString();
+                        //PlayerPrefs.SetInt("Score" + i.ToString(), score);
+
+						shiftDown (i);
+						return;
                     }
                 }
                 else
                 {
-                    scoreObjects[i].GetComponent<Text>().text = score.ToString();
-                    PlayerPrefs.SetInt("Score" + i.ToString(), score);
+					shiftDown (i);
+					return;
                 }
             }
         }
@@ -58,5 +70,23 @@ public class highScores : MonoBehaviour {
 
 	}
 
+	void shiftDown(int index)
+	{
+		int tempScore = 0;
 
+		for (int i = 5; i >= index; i--) {
+			
+			if (i == index) {
+				highScoreList [i - 1] = score;
+				scoreObjects [i - 1].GetComponent<Text> ().text = score.ToString ();
+				PlayerPrefs.SetInt ("Score" + i.ToString (), score);
+			} else {
+				highScoreList [i - 1] = highScoreList [i - 2];
+				scoreObjects [i - 1].GetComponent<Text> ().text = highScoreList [i - 2].ToString ();
+				PlayerPrefs.SetInt ("Score" + i.ToString (), highScoreList [i - 2]);
+			}
+		}
+
+
+	}
 }

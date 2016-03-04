@@ -26,23 +26,25 @@ public class obstacles : MonoBehaviour {
 	public GameObject zues;
 	public GameObject asteroid;
 	public GameObject star;
+	public GameObject astro;
 
 
 	// Object Numbers
-	private int numHoops = 15;
+	private int numHoops = 20;
 	private int numClouds = 7;
 	private int numPlanes = 4;
 	private int numBirds = 5;
 	private int numFlocks = 0;
-	private int numRockets = 10;
-	private int numFreemen = 0;
+	private int numRockets = 15;
+	private int numFreemen = 5;
 	private int numJesus = 5;
 	private int numVishnu = 5;
 	private int numBuddha = 5;
 	private int numFsm = 5;
 	private int numZues = 5;
 	private int numAsteroid = 10;
-	private int numStars = 25;
+	private int numStars = 35;
+	private int numAstro = 7;
 
 
 	// Use this for initialization
@@ -215,6 +217,14 @@ public class obstacles : MonoBehaviour {
 			float randY = Random.Range(175f, 450f);
 			Vector2 pos = new Vector2(randX, randY);
 			Instantiate(star, pos, Quaternion.identity);
+		}
+		// Make Astro
+		for (int i = 0; i < numAstro; i++)
+		{
+			float randX = Random.Range(20f, 40f);
+			float randY = Random.Range(170f, 420f);
+			Vector2 pos = new Vector2(randX, randY);
+			Instantiate(astro, pos, Quaternion.identity);
 		}
 
 

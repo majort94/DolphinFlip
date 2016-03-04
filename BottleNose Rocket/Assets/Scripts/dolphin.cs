@@ -36,6 +36,9 @@ public class dolphin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//DELETE THIS --- CLEARS PLAYER PREFS
+		//PlayerPrefs.DeleteAll ();
+
 		dolphinTransform = GetComponent<Transform>();
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -64,6 +67,9 @@ public class dolphin : MonoBehaviour {
 				maxHeight = dolphinTransform.position.y;
 				setScore ();
 
+			}
+			if (dolphinTransform.position.y > 590) {
+				rb.velocity = new Vector2 (rb.velocity.x, 0f);
 			}
 			if ((dolphinTransform.position.y < 0) && (!underSea)) {
 				underSea = true;
