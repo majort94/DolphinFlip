@@ -84,6 +84,7 @@ public class dolphin : MonoBehaviour {
 				rocket.velocity = Vector2.zero;
 				gameOver.SetActive (true);
                 highScores.SetActive(true);
+                highScores.Initialize();
 				manager.GetComponent<InputManager> ().gameOver = true;
 			}
 
