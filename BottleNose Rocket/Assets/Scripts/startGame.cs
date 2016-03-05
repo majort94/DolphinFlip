@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class startGame : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class startGame : MonoBehaviour {
 	public bool loadScreen = true;
 	private float timestamp = -5;
 	private int level;
+	public GameObject t;
 
 	public void Start(){
 		//loadingScreen = GameObject.Find ("/Canvas/Window/loading");
@@ -25,6 +27,7 @@ public class startGame : MonoBehaviour {
 		}
 		if (Time.timeSinceLevelLoad > (timestamp + 0.1f)) {
 			SceneManager.LoadScene (level);
+			t.SetActive (true);
 		}
 
 	}

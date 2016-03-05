@@ -40,7 +40,6 @@ public class InputManager : MonoBehaviour {
 		}
 	}
 	public void onHit(){
-		clicks = 0;
 		clickText.text = clicks + " taps remaining";
 	}
 	public void onRocket(){
@@ -77,6 +76,8 @@ public class InputManager : MonoBehaviour {
 				if (dolphin.GetComponent<Rigidbody2D> ().velocity.y < 0) {
 					dolphin.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 					rocketBody.velocity = Vector2.zero;
+					rocketBody.AddForce (direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+					dolphinBody.AddForce ( direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				}
 				rocketBody.AddForce (direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 				dolphinBody.AddForce ( direction * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);

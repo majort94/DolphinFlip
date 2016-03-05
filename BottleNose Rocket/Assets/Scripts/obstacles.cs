@@ -30,7 +30,7 @@ public class obstacles : MonoBehaviour {
 
 
 	// Object Numbers
-	private int numHoops = 20;
+	private int numHoops = 30;
 	private int numClouds = 7;
 	private int numPlanes = 4;
 	private int numBirds = 5;
@@ -43,7 +43,7 @@ public class obstacles : MonoBehaviour {
 	private int numFsm = 5;
 	private int numZues = 5;
 	private int numAsteroid = 10;
-	private int numStars = 35;
+	private int numStars = 50;
 	private int numAstro = 7;
 
 

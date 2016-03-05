@@ -30,8 +30,8 @@ public class hoop : MonoBehaviour {
 				dolphin.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 				rocket.GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 			}
-			rocketBody.AddForce (new Vector2 (.25f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
-			dolphinBody.AddForce (new Vector2 (.25f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+			rocketBody.AddForce (new Vector2 (.5f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
+			dolphinBody.AddForce (new Vector2 (.5f, 2f) * rocket.GetComponent<rocket> ().thrust, ForceMode2D.Impulse);
 		}
 	}
 	
